@@ -1,0 +1,30 @@
+PODS:
+  - DTCoreText (1.6.17):
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTFoundation/Core (1.7.10)
+  - DTFoundation/DTAnimatedGIF (1.7.10)
+  - DTFoundation/DTHTMLParser (1.7.10):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.7.10):
+    - DTFoundation/Core
+  - Ji (1.2.0):
+    - Ji/Ji (= 1.2.0)
+  - Ji/Ji (1.2.0):
+    - Ji/Ji-libxml
+  - Ji/Ji-libxml (1.2.0)
+
+DEPENDENCIES:
+  - DTCoreText
+  - Ji (~> 1.2.0)
+
+SPEC CHECKSUMS:
+  DTCoreText: 3ea8bba23dd2141ba18adb227a7dd33a822df1c4
+  DTFoundation: 3b6b1b817d2a7fb02e7eaf2596c922a68145bd43
+  Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
+
+PODFILE CHECKSUM: b9153d0cb47e1eabd1e0609bb20bb814d88fd2ad
+
+COCOAPODS: 1.0.1
