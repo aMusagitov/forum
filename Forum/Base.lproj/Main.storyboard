@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Master-->
@@ -80,23 +80,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ForumCell" rowHeight="200" id="JJv-d1-Td5">
-                                <rect key="frame" x="0.0" y="86" width="600" height="200"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ForumCell" rowHeight="50" id="JJv-d1-Td5">
+                                <rect key="frame" x="0.0" y="86" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JJv-d1-Td5" id="9WA-ZJ-um9">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="T2J-D4-anc" customClass="DTAttributedLabel">
-                                            <rect key="frame" x="8" y="0.0" width="584" height="199"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQz-ZM-Q1c">
+                                            <rect key="frame" x="8" y="8" width="556" height="33"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="T2J-D4-anc" firstAttribute="leading" secondItem="9WA-ZJ-um9" secondAttribute="leading" constant="8" id="5Em-IU-LLX"/>
-                                        <constraint firstItem="T2J-D4-anc" firstAttribute="top" secondItem="9WA-ZJ-um9" secondAttribute="top" id="K68-gg-aeL"/>
-                                        <constraint firstAttribute="bottom" secondItem="T2J-D4-anc" secondAttribute="bottom" id="Nxy-hf-xSE"/>
-                                        <constraint firstAttribute="trailing" secondItem="T2J-D4-anc" secondAttribute="trailing" constant="8" id="pUq-OP-EcU"/>
+                                        <constraint firstItem="cQz-ZM-Q1c" firstAttribute="leading" secondItem="9WA-ZJ-um9" secondAttribute="leading" constant="8" id="5ly-Dg-Mxe"/>
+                                        <constraint firstItem="cQz-ZM-Q1c" firstAttribute="top" secondItem="9WA-ZJ-um9" secondAttribute="top" constant="8" id="YRL-sI-RA6"/>
+                                        <constraint firstAttribute="bottom" secondItem="cQz-ZM-Q1c" secondAttribute="bottom" constant="8" id="aca-9S-Xvz"/>
+                                        <constraint firstAttribute="trailing" secondItem="cQz-ZM-Q1c" secondAttribute="trailing" constant="3" id="xmZ-ez-52K"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
