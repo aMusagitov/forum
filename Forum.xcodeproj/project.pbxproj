@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4353EFF91D48A573007D0072 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353EFF81D48A573007D0072 /* ForumParser.swift */; };
-		437EAAB31D47539E004DFAEF /* ForumPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437EAAB21D47539E004DFAEF /* ForumPage.swift */; };
-		437EAAB51D477EF9004DFAEF /* Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437EAAB41D477EF9004DFAEF /* Sections.swift */; };
 		43F541861D46119D00E2EF84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F541851D46119D00E2EF84 /* AppDelegate.swift */; };
 		43F541881D46119D00E2EF84 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F541871D46119D00E2EF84 /* MasterViewController.swift */; };
 		43F5418A1D46119D00E2EF84 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F541891D46119D00E2EF84 /* DetailViewController.swift */; };
@@ -24,8 +22,6 @@
 /* Begin PBXFileReference section */
 		42D849E1816E0BFCF1679576 /* Pods-Forum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Forum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Forum/Pods-Forum.debug.xcconfig"; sourceTree = "<group>"; };
 		4353EFF81D48A573007D0072 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumParser.swift; sourceTree = SOURCE_ROOT; };
-		437EAAB21D47539E004DFAEF /* ForumPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumPage.swift; sourceTree = "<group>"; };
-		437EAAB41D477EF9004DFAEF /* Sections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sections.swift; sourceTree = "<group>"; };
 		43F541821D46119D00E2EF84 /* Forum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F541851D46119D00E2EF84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43F541871D46119D00E2EF84 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -75,11 +71,9 @@
 			children = (
 				43F541851D46119D00E2EF84 /* AppDelegate.swift */,
 				43F541871D46119D00E2EF84 /* MasterViewController.swift */,
-				437EAAB41D477EF9004DFAEF /* Sections.swift */,
 				43F541891D46119D00E2EF84 /* DetailViewController.swift */,
 				4353EFF81D48A573007D0072 /* ForumParser.swift */,
 				8124D6D01D4862D000641B42 /* ForumObject.swift */,
-				437EAAB21D47539E004DFAEF /* ForumPage.swift */,
 				8124D6D21D4869E800641B42 /* HeaderObject.swift */,
 				43F5418B1D46119D00E2EF84 /* Main.storyboard */,
 				43F5418E1D46119D00E2EF84 /* Assets.xcassets */,
@@ -228,8 +222,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				437EAAB51D477EF9004DFAEF /* Sections.swift in Sources */,
-				437EAAB31D47539E004DFAEF /* ForumPage.swift in Sources */,
 				4353EFF91D48A573007D0072 /* ForumParser.swift in Sources */,
 				8124D6D31D4869E800641B42 /* HeaderObject.swift in Sources */,
 				8124D6D11D4862D000641B42 /* ForumObject.swift in Sources */,

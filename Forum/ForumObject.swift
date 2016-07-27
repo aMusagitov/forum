@@ -11,12 +11,14 @@ import Foundation
 
 class ForumObject : NSObject {
     
-    init(url : String, content : String) {
+    init(url : String, type : String, content : String) {
         super.init()
         self.url = url
+        self.type = type
         self.content = content
     }
     
     var url : String!
+    var type : String!
     var content : String!
 }

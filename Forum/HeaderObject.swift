@@ -8,13 +8,15 @@
 
 import Foundation
 
-class HeaderObject: ForumObject {
+class HeaderObject: NSObject {
     
     init(url: String, content: String, children : [ForumObject]) {
         self.children = children
-        super.init(url: url, content : content)
+        self.url = url
+        self.content = content
     }
     
     var children : [ForumObject]
-    
+    var url : String!
+    var content : String!
 }

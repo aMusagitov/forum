@@ -25,8 +25,9 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
-            self.parser.parseSections()
+        self.parser.parseSections { (completed) -> Void in
             self.tableView.reloadData()
+        }        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -95,7 +96,7 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if !self.parser.page.pathUrl.containsString("t="){
+        if !self.parser.pathUrl.containsString("t="){
             let vc = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("MasterViewController") as!MasterViewController
             self.parser.nextPageUrl(vc, indexPath: indexPath)
             navigationController?.pushViewController(vc, animated: true)
