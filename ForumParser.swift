@@ -120,8 +120,12 @@ class ForumParser: NSObject {
     
     func nextPageUrl(vc: MasterViewController, indexPath: NSIndexPath) -> (){
         vc.parser.lastPathUrl = self.pathUrl
-        vc.parser.pathUrl = self.headers[indexPath.section].children[indexPath.row].url
+        vc.parser.pathUrl = getURL(atIndexPath: indexPath)
         vc.parser.typeForum = self.headers[indexPath.section].children[indexPath.row].type
+    }
+    
+    func getURL(atIndexPath indexPath: NSIndexPath) -> String {
+        return self.headers[indexPath.section].children[indexPath.row].url
     }
     
     //    func parseUrl() {

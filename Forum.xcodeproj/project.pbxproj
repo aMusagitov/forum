@@ -16,6 +16,9 @@
 		43F541921D46119D00E2EF84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F541901D46119D00E2EF84 /* LaunchScreen.storyboard */; };
 		8124D6D11D4862D000641B42 /* ForumObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8124D6D01D4862D000641B42 /* ForumObject.swift */; };
 		8124D6D31D4869E800641B42 /* HeaderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8124D6D21D4869E800641B42 /* HeaderObject.swift */; };
+		81C4D0BD1D4F4BAC00B86D5A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C4D0BC1D4F4BAC00B86D5A /* MessagesViewController.swift */; };
+		81C4D0C01D4F4CAA00B86D5A /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C4D0BE1D4F4CAA00B86D5A /* MessageViewController.swift */; };
+		81C4D0C11D4F4CAA00B86D5A /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C4D0BF1D4F4CAA00B86D5A /* String+HTML.swift */; };
 		DCBE9A8C57E209AFC08A883C /* Pods_Forum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B490CDC2E79E79CDB7C64896 /* Pods_Forum.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +35,9 @@
 		43F541931D46119D00E2EF84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8124D6D01D4862D000641B42 /* ForumObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumObject.swift; sourceTree = "<group>"; };
 		8124D6D21D4869E800641B42 /* HeaderObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderObject.swift; sourceTree = "<group>"; };
+		81C4D0BC1D4F4BAC00B86D5A /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		81C4D0BE1D4F4CAA00B86D5A /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		81C4D0BF1D4F4CAA00B86D5A /* String+HTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		9E7316EBFC55C284C3ACE5FC /* Pods-Forum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Forum.release.xcconfig"; path = "Pods/Target Support Files/Pods-Forum/Pods-Forum.release.xcconfig"; sourceTree = "<group>"; };
 		B490CDC2E79E79CDB7C64896 /* Pods_Forum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Forum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,6 +78,9 @@
 				43F541851D46119D00E2EF84 /* AppDelegate.swift */,
 				43F541871D46119D00E2EF84 /* MasterViewController.swift */,
 				43F541891D46119D00E2EF84 /* DetailViewController.swift */,
+				81C4D0BC1D4F4BAC00B86D5A /* MessagesViewController.swift */,
+				81C4D0BE1D4F4CAA00B86D5A /* MessageViewController.swift */,
+				81C4D0BF1D4F4CAA00B86D5A /* String+HTML.swift */,
 				4353EFF81D48A573007D0072 /* ForumParser.swift */,
 				8124D6D01D4862D000641B42 /* ForumObject.swift */,
 				8124D6D21D4869E800641B42 /* HeaderObject.swift */,
@@ -224,8 +233,11 @@
 			files = (
 				4353EFF91D48A573007D0072 /* ForumParser.swift in Sources */,
 				8124D6D31D4869E800641B42 /* HeaderObject.swift in Sources */,
+				81C4D0C01D4F4CAA00B86D5A /* MessageViewController.swift in Sources */,
 				8124D6D11D4862D000641B42 /* ForumObject.swift in Sources */,
 				43F5418A1D46119D00E2EF84 /* DetailViewController.swift in Sources */,
+				81C4D0BD1D4F4BAC00B86D5A /* MessagesViewController.swift in Sources */,
+				81C4D0C11D4F4CAA00B86D5A /* String+HTML.swift in Sources */,
 				43F541881D46119D00E2EF84 /* MasterViewController.swift in Sources */,
 				43F541861D46119D00E2EF84 /* AppDelegate.swift in Sources */,
 			);
