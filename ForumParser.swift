@@ -13,7 +13,6 @@ class ForumParser: NSObject {
     var messages = [ForumObject]()
     var headers = [HeaderObject]()
     var pathUrl = "http://forum.awd.ru/"
-    var lastPathUrl = "http://forum.awd.ru/"
     var typeForum = "mainPage"
 
     
@@ -118,8 +117,7 @@ class ForumParser: NSObject {
         return message
     }
     
-    func nextPageUrl(vc: MasterViewController, indexPath: NSIndexPath) -> (){
-        vc.parser.lastPathUrl = self.pathUrl
+    func nextPage(vc: MasterViewController, indexPath: NSIndexPath) -> (){
         vc.parser.pathUrl = getURL(atIndexPath: indexPath)
         vc.parser.typeForum = self.headers[indexPath.section].children[indexPath.row].type
     }

@@ -11,7 +11,7 @@ import Ji
 import DTCoreText
 
 class MessagesViewController: UIViewController {
-    var messages : [NSAttributedString]? {
+    var messages : [MessageObject]? {
         didSet {
             tableView.reloadData()
         }
@@ -30,16 +30,38 @@ class MessagesViewController: UIViewController {
     private func parse() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             let jiDoc = Ji(htmlURL: NSURL(string: self.url)!)
-            guard let array = jiDoc?.rootNode?.descendantsWithAttributeName("class", attributeValue: "postbody") else { return }
-            var objects = [NSAttributedString]()
-            for message in array {
-//                let options = [DTDefaultTextColor : UIColor.blackColor(), DTDefaultFontFamily : "Helvetica Neue"]
-                let str = NSMutableString(string: message.rawContent!)
-                print("\(str.length)")
-                str.removeTrailingWhitespace()
-                print("\(str.length)")
-                let attributedString = NSAttributedString(HTMLData: str.dataUsingEncoding(NSUTF8StringEncoding), documentAttributes: nil)
-                objects.append(attributedString)
+            guard let contentsArray = jiDoc?.rootNode?.descendantsWithAttributeName("class", attributeValue: "content") else { return }
+            guard let authorsArray = jiDoc?.rootNode?.descendantsWithAttributeName("class", attributeValue: "author") else { return }
+            guard let messagesOrder = jiDoc?.rootNode?.descendantsWithAttributeName("style", attributeValue: "float: right;") else { return }
+            guard let avatarsArray = jiDoc?.rootNode?.descendantsWithAttributeName("class", attributeValue: "postprofile") else { return }
+            var objects = [MessageObject]()
+            var avatar = ""
+            print(contentsArray.count)
+            print(authorsArray.count)
+            print(messagesOrder.count)
+            print(avatarsArray.count)
+            for i in 0..<contentsArray.count {
+                var j = 0
+                let str = NSMutableString(string: contentsArray[i].rawContent!)
+                let authorAndTime = authorsArray[i].content?.componentsSeparatedByString(" » ")
+                let content = NSAttributedString(HTMLData: str.dataUsingEncoding(NSUTF8StringEncoding), documentAttributes: nil)
+                if authorsArray[i].lastChild?.content == "Гость" {
+                    objects.append(MessageObject(time: authorAndTime![1], content: content, author: AuthorObject(name: authorAndTime![0], profileUrl: "", avatar: "")))
+                    j--
+                } else {
+                guard var url = authorsArray[i].lastChild?.firstChild!.attributes["href"] else {return}
+                    if let a = avatarsArray[j].firstDescendantWithName("a"){
+                        if a.attributes["href"]! == url{
+                            if let img = (a.firstChildWithName("img")?.attributes["src"]){
+                                avatar = img.stringByReplacingOccurrencesOfString("/.", withString: "http://forum.awd.ru")
+                                url = url.stringByReplacingOccurrencesOfString(".", withString: "http://forum.awd.ru")
+                            }
+                        }
+                    }
+                    j++
+                    //                let options = [DTDefaultTextColor : UIColor.blackColor(), DTDefaultFontFamily : "Helvetica Neue"]
+                    objects.append(MessageObject(time: authorAndTime![1], content: content, author: AuthorObject(name: authorAndTime![0], profileUrl: url, avatar: avatar)))
+                }
             }
             dispatch_async(dispatch_get_main_queue(), {
                 self.messages = objects
@@ -59,7 +81,6 @@ class MessagesViewController: UIViewController {
         sampleCell.contentTextView.frame.size.width = tableView.bounds.size.width
     }
 }
-
 extension MessagesViewController: UITableViewDataSource, UITableViewDelegate, MessageTableViewCellDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let array = messages else { return 0 }
@@ -70,17 +91,21 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate, Me
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableViewCell") as! MessageTableViewCell
         cell.tableView = tableView
         cell.delegate = self
-        cell.setContent(messages![indexPath.row])
+        cell.setContent(messages![indexPath.row].content)
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let attrString = messages![indexPath.row]
+        let attrString = messages![indexPath.row].content
         let layouter = DTCoreTextLayouter(attributedString: attrString)
         let maxRect = CGRectMake(2, 0, tableView.frame.size.width - 4, CGFloat(CGFLOAT_HEIGHT_UNKNOWN))
         let entireString = NSMakeRange(0, attrString.length)
         let layoutFrame = layouter.layoutFrameWithRect(maxRect, range: entireString)
         let sizeNeeded = layoutFrame.frame.size
+        if sizeNeeded.height > 250
+        {
+            return 250
+        }
         return sizeNeeded.height
 
     }
@@ -94,7 +119,7 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate, Me
         guard let vc = segue.destinationViewController as? MessageViewController else { return }
         let indexPath = tableView.indexPathForCell(cell)!
         print(vc.view)
-        vc.textView.attributedText = messages![indexPath.row]
+        vc.textView.attributedText = messages![indexPath.row].content
     }
 }
 

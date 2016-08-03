@@ -102,7 +102,7 @@ class MasterViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
         } else if !self.parser.pathUrl.containsString("t="){
             let vc = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("MasterViewController") as!MasterViewController
-            self.parser.nextPageUrl(vc, indexPath: indexPath)
+            self.parser.nextPage(vc, indexPath: indexPath)
             navigationController?.pushViewController(vc, animated: true)
         } else {
 
