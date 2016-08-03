@@ -51,16 +51,16 @@ class ForumParser: NSObject {
                 })
                 
             } else {
-                let icon = ["", "icon"]
+                let icon = ["", "icon", "icon"]
                 if self.typeForum == "forum" {
-                    attrBg = ["forumbg announcement", "forumbg"]
-                    attrRow = ["topictitle", "topictitle"]
+                    attrBg = ["forumbg announcement", "forumbg", "forumbg"]
+                    attrRow = ["topictitle", "topictitle", "topictitle"]
                 } else if self.typeForum == "subforum" {
-                    attrBg = ["forumbg announcement", "forabg"]
-                    attrRow = ["topictitle", "forumtitle"]
+                    attrBg = ["forumbg announcement", "forabg", "forumbg"]
+                    attrRow = ["topictitle", "forumtitle", "topictitle"]
                 }
-                for i in 0...1{
-                    guard let section = jiDoc?.rootNode?.firstDescendantWithAttributeName("class", attributeValue: attrBg[i]) else { return }
+                for i in 0...2{
+                    guard let section = jiDoc?.rootNode?.firstDescendantWithAttributeName("class", attributeValue: attrBg[i]) else { continue }
                     guard let header = section.firstDescendantWithAttributeName("class", attributeValue: "header") else { continue }
                     guard let icons = header.firstDescendantWithAttributeName("class", attributeValue: icon[i]) else { continue }
                     guard let dt = icons.firstChildWithName("dt") else { continue }
