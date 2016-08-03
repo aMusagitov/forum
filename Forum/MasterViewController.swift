@@ -95,11 +95,17 @@ class MasterViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        if !self.parser.pathUrl.containsString("t="){
+        let nextUrl = self.parser.getURL(atIndexPath: indexPath)
+        if nextUrl.containsString("t=") {
+            guard let vc = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("MessagesViewController") as? MessagesViewController else { return }
+            vc.url = nextUrl
+            navigationController?.pushViewController(vc, animated: true)
+        } else if !self.parser.pathUrl.containsString("t="){
             let vc = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("MasterViewController") as!MasterViewController
             self.parser.nextPageUrl(vc, indexPath: indexPath)
             navigationController?.pushViewController(vc, animated: true)
+        } else {
+
         }
     }
 }
