@@ -8,7 +8,7 @@
 
 import Foundation
 
-//extension String {
+extension String {
 //    func removeTrailingWhitespace() {
 //        let length = characters.count
 //        
@@ -31,8 +31,13 @@ import Foundation
 //        return _c == ' ' || _c == '\t' || _c == 0xA || _c == 0xB || _c = 0xC || _c = 0xD || _c = 0xB5
 //    }
 //    
-//    
-//}
+//
+    
+    func getCorrectedURLString() -> String {
+        return stringByReplacingOccurrencesOfString("./", withString: "http://forum.awd.ru/")
+    }
+}
+
 //#define IS_WHITESPACE(_c) (_c == ' ' || _c == '\t' || _c == 0xA || _c == 0xB || _c == 0xC || _c == 0xD || _c == 0x85)
 //
 //@implementation NSMutableString (HTML)

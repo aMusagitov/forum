@@ -50,15 +50,13 @@ class ForumParser: NSObject {
                     attrBg = ["forumbg announcement", "forabg", "forumbg"]
                     attrRow = ["topictitle", "forumtitle", "topictitle"]
                 }
-                for i in 0...2{
+                for i in 0...2 {
                     guard let section = jiDoc?.rootNode?.firstDescendantWithAttributeName("class", attributeValue: attrBg[i]) else { continue }
                     guard let header = section.firstDescendantWithAttributeName("class", attributeValue: "header") else { continue }
                     guard let icons = header.firstDescendantWithAttributeName("class", attributeValue: icon[i]) else { continue }
                     guard let dt = icons.firstChildWithName("dt") else { continue }
-                    //                guard let urlString = dt.children.first?.attributes["href"] else { continue }
                     guard let content = dt.content else { continue }
                     let rows = section.descendantsWithAttributeName("class", attributeValue: attrRow[i])
-                    //                let link = urlString.stringByReplacingOccurrencesOfString("./", withString: "http://forum.awd.ru/")
                     objects.append(HeaderObject(url: "", content: content, children: self.parseRows(rows)))
                 }
                 dispatch_async(dispatch_get_main_queue(), {
@@ -74,17 +72,28 @@ class ForumParser: NSObject {
         var objects = [ForumObject]()
         for row in rows {
             if self.typeForum == .MainPage{
-                let dt = row.firstDescendantWithName("dt")
-                guard let a = dt!.firstChildWithName("a"), let content = a.content, let urlString = a.attributes["href"] else { continue }
-                let link = urlString.stringByReplacingOccurrencesOfString("./", withString: "http://forum.awd.ru/")
-                objects.append(ForumObject(url:link, type: chooseForumType(row), content:content))
+                guard let object = getMainPageForumObject(fromRow: row) else { continue }
+                objects.append(object)
             } else if (self.typeForum == ForumObjectType.Subforum || self.typeForum == ForumObjectType.Forum) {
-                guard let content = row.content, let urlString = row.attributes["href"] else {continue}
-                let link = urlString.stringByReplacingOccurrencesOfString("./", withString: "http://forum.awd.ru/")
-                objects.append(ForumObject(url:link, type: chooseForumType(row.parent!.parent!.parent!), content:content))
+                guard let object = getForumObject(fromRow: row) else { continue }
+                objects.append(object)
             }
         }
         return objects
+    }
+    
+    func getMainPageForumObject(fromRow row : JiNode) -> ForumObject? {
+        let dt = row.firstDescendantWithName("dt")
+        guard let a = dt!.firstChildWithName("a"), let content = a.content, let urlString = a.attributes["href"] else { return nil }
+        let link = urlString.getCorrectedURLString()
+        return ForumObject(url:link, type: chooseForumType(row), content:content)
+    }
+    
+    func getForumObject(fromRow row : JiNode) -> ForumObject? {
+        guard let content = row.content, let urlString = row.attributes["href"] else { return nil}
+        let link = urlString.getCorrectedURLString()
+        guard let jNode = row.parent?.parent?.parent else { return nil }
+        return ForumObject(url:link, type: chooseForumType(jNode), content:content)
     }
     
     func chooseForumType(row : JiNode) -> ForumObjectType {
@@ -104,8 +113,7 @@ class ForumParser: NSObject {
     }
     
     func getCellContent(indexPath: NSIndexPath) -> (String){
-        let message = self.headers[indexPath.section].children[indexPath.row].content
-        return message
+        return self.headers[indexPath.section].children[indexPath.row].content
     }
     
     func nextPage(vc: ForumViewController, indexPath: NSIndexPath) -> (){
