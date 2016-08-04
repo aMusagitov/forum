@@ -95,17 +95,14 @@ class ForumViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let nextUrl = self.parser.getURL(atIndexPath: indexPath)
-        if nextUrl.containsString("t=") {
+        if self.parser.headers[indexPath.section].children[indexPath.row].type == ForumObjectType.Topic {
             guard let vc = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("MessagesViewController") as? MessagesViewController else { return }
-            vc.url = nextUrl
+            vc.url = self.parser.getURL(atIndexPath: indexPath)
             navigationController?.pushViewController(vc, animated: true)
-        } else if !self.parser.pathUrl.containsString("t="){
+        } else {
             let vc = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("ForumViewController") as!ForumViewController
             self.parser.nextPage(vc, indexPath: indexPath)
             navigationController?.pushViewController(vc, animated: true)
-        } else {
-
         }
     }
 }
