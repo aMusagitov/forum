@@ -13,7 +13,7 @@ class ForumParser: NSObject {
     var messages = [ForumObject]()
     var headers = [HeaderObject]()
     var pathUrl = "http://forum.awd.ru/"
-    var typeForum = "mainPage"
+    var typeForum = ForumObjectType.MainPage
 
     
     func parseSections(completion:((completed : Bool) -> Void)) {
@@ -32,7 +32,7 @@ class ForumParser: NSObject {
                     self.headers = objects
                     completion(completed: true)
                 })
-            } else if self.typeForum == "mainPage" {
+            } else if self.typeForum == .MainPage {
                 guard let array = jiDoc?.rootNode?.descendantsWithAttributeName("class", attributeValue: "forabg") else { return }
                 for section in array {
                     guard let header = section.firstDescendantWithAttributeName("class", attributeValue: "header") else { continue }
@@ -51,10 +51,10 @@ class ForumParser: NSObject {
                 
             } else {
                 let icon = ["", "icon", "icon"]
-                if self.typeForum == "forum" {
+                if self.typeForum == .Forum {
                     attrBg = ["forumbg announcement", "forumbg", "forumbg"]
                     attrRow = ["topictitle", "topictitle", "topictitle"]
-                } else if self.typeForum == "subforum" {
+                } else if self.typeForum == .Subforum {
                     attrBg = ["forumbg announcement", "forabg", "forumbg"]
                     attrRow = ["topictitle", "forumtitle", "topictitle"]
                 }
@@ -81,35 +81,35 @@ class ForumParser: NSObject {
     func parseRows(rows : [JiNode]) -> [ForumObject] {
         var objects = [ForumObject]()
         for row in rows {
-            if self.typeForum == "mainPage"{
+            if self.typeForum == .MainPage{
                 let dt = row.firstDescendantWithName("dt")
                 guard let a = dt!.firstChildWithName("a"), let content = a.content, let urlString = a.attributes["href"] else { continue }
                 let link = urlString.stringByReplacingOccurrencesOfString("./", withString: "http://forum.awd.ru/")
-                objects.append(ForumObject(url:link, type: chooseForumType(row), content:content))
+                objects.append(ForumObject(url:link, type: .Forum, content:content))
             } else if self.pathUrl.containsString("t=") {
                 let content = row.firstDescendantWithAttributeName("class", attributeValue: "content")
                 guard let text = content?.content else {continue}
-                objects.append(ForumObject(url: "", type: "", content: text))
-            } else if (self.typeForum == "subforum" || self.typeForum == "forum"){
+                objects.append(ForumObject(url: "", type: .Topic, content: text))
+            } else if (self.typeForum == ForumObjectType.Subforum || self.typeForum == ForumObjectType.Forum) {
                 guard let content = row.content, let urlString = row.attributes["href"] else {continue}
                 let link = urlString.stringByReplacingOccurrencesOfString("./", withString: "http://forum.awd.ru/")
-                objects.append(ForumObject(url:link, type: chooseForumType(row), content:content))
+                objects.append(ForumObject(url:link, type: .Subforum, content:content))
             }
         }
         return objects
     }
     
-    func chooseForumType(row : JiNode) ->(String) {
+    func chooseForumType(row : JiNode) -> ForumObjectType {
         if let dl = row.firstDescendantWithName("dl"){
             if let icon = dl.attributes["style"]{
                 if icon == "background-image: url(./styles/prosilver/imageset/forum_read_subforum.gif); background-repeat: no-repeat;" {
-                    return "subforum"
+                    return .Subforum
                 } else if icon == "background-image: url(./styles/prosilver/imageset/forum_read.gif); background-repeat: no-repeat;" {
-                    return "forum"
+                    return .Forum
                 }
             }
         }
-        return "forum"
+        return .Forum
     }
     
     func getCellContent(indexPath: NSIndexPath) -> (String){
@@ -117,7 +117,7 @@ class ForumParser: NSObject {
         return message
     }
     
-    func nextPage(vc: MasterViewController, indexPath: NSIndexPath) -> (){
+    func nextPage(vc: ForumViewController, indexPath: NSIndexPath) -> (){
         vc.parser.pathUrl = getURL(atIndexPath: indexPath)
         vc.parser.typeForum = self.headers[indexPath.section].children[indexPath.row].type
     }
@@ -125,27 +125,5 @@ class ForumParser: NSObject {
     func getURL(atIndexPath indexPath: NSIndexPath) -> String {
         return self.headers[indexPath.section].children[indexPath.row].url
     }
-    
-    //    func parseUrl() {
-    //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-    //
-    //            let jiDoc = Ji(htmlURL: NSURL(string: self.pathUrl)!)
-    //            self.switchContent()
-    //            guard let array = jiDoc?.rootNode?.descendantsWithAttributeName("class", attributeValue: self.content) else { return }
-    //            var objects = [ForumObject]()
-    //            for message in array {
-    //                var link = message.attributes["href"]!
-    //                if !self.pathUrl.containsString("t="){
-    //                    link = link.stringByReplacingOccurrencesOfString("./", withString: "http://forum.awd.ru/")
-    //                    self.links.append(link)
-    //                }
-    //                objects.append(ForumObject(url: link, content: message.content!))
-    //            }
-    //            dispatch_async(dispatch_get_main_queue(), {
-    //                self.messages = objects
-    //                self.tableView.reloadData()
-    //            })
-    //        }
-    //    }
     
 }

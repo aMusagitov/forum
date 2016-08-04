@@ -1,5 +1,5 @@
 //
-//  MasterViewController.swift
+//  ForumViewController.swift
 //  Forum
 //
 //  Created by Bogdan Dikolenko on 25.07.16.
@@ -10,7 +10,7 @@ import UIKit
 import Ji
 import DTCoreText
 
-class MasterViewController: UITableViewController {
+class ForumViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var parser = ForumParser()
@@ -101,7 +101,7 @@ class MasterViewController: UITableViewController {
             vc.url = nextUrl
             navigationController?.pushViewController(vc, animated: true)
         } else if !self.parser.pathUrl.containsString("t="){
-            let vc = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("MasterViewController") as!MasterViewController
+            let vc = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("ForumViewController") as!ForumViewController
             self.parser.nextPage(vc, indexPath: indexPath)
             navigationController?.pushViewController(vc, animated: true)
         } else {

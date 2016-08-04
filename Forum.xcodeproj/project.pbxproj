@@ -7,41 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		433B40E71D51FAC50055193E /* MessageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B40E61D51FAC50055193E /* MessageObject.swift */; };
-		433B40E91D521A390055193E /* AuthorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B40E81D521A390055193E /* AuthorObject.swift */; };
 		4353EFF91D48A573007D0072 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353EFF81D48A573007D0072 /* ForumParser.swift */; };
 		43F541861D46119D00E2EF84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F541851D46119D00E2EF84 /* AppDelegate.swift */; };
-		43F541881D46119D00E2EF84 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F541871D46119D00E2EF84 /* MasterViewController.swift */; };
-		43F5418A1D46119D00E2EF84 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F541891D46119D00E2EF84 /* DetailViewController.swift */; };
 		43F5418D1D46119D00E2EF84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F5418B1D46119D00E2EF84 /* Main.storyboard */; };
 		43F5418F1D46119D00E2EF84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43F5418E1D46119D00E2EF84 /* Assets.xcassets */; };
 		43F541921D46119D00E2EF84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F541901D46119D00E2EF84 /* LaunchScreen.storyboard */; };
-		8124D6D11D4862D000641B42 /* ForumObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8124D6D01D4862D000641B42 /* ForumObject.swift */; };
-		8124D6D31D4869E800641B42 /* HeaderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8124D6D21D4869E800641B42 /* HeaderObject.swift */; };
-		81C4D0BD1D4F4BAC00B86D5A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C4D0BC1D4F4BAC00B86D5A /* MessagesViewController.swift */; };
-		81C4D0C01D4F4CAA00B86D5A /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C4D0BE1D4F4CAA00B86D5A /* MessageViewController.swift */; };
-		81C4D0C11D4F4CAA00B86D5A /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C4D0BF1D4F4CAA00B86D5A /* String+HTML.swift */; };
+		816B980E1D532CD600598BD1 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B98031D532CD600598BD1 /* String+HTML.swift */; };
+		816B980F1D532CD600598BD1 /* AuthorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B98051D532CD600598BD1 /* AuthorObject.swift */; };
+		816B98101D532CD600598BD1 /* ForumObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B98061D532CD600598BD1 /* ForumObject.swift */; };
+		816B98111D532CD600598BD1 /* HeaderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B98071D532CD600598BD1 /* HeaderObject.swift */; };
+		816B98121D532CD600598BD1 /* MessageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B98081D532CD600598BD1 /* MessageObject.swift */; };
+		816B98131D532CD600598BD1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B980A1D532CD600598BD1 /* DetailViewController.swift */; };
+		816B98141D532CD600598BD1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B980B1D532CD600598BD1 /* MasterViewController.swift */; };
+		816B98151D532CD600598BD1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B980C1D532CD600598BD1 /* MessagesViewController.swift */; };
+		816B98161D532CD600598BD1 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816B980D1D532CD600598BD1 /* MessageViewController.swift */; };
 		DCBE9A8C57E209AFC08A883C /* Pods_Forum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B490CDC2E79E79CDB7C64896 /* Pods_Forum.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		42D849E1816E0BFCF1679576 /* Pods-Forum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Forum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Forum/Pods-Forum.debug.xcconfig"; sourceTree = "<group>"; };
-		433B40E61D51FAC50055193E /* MessageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageObject.swift; sourceTree = "<group>"; };
-		433B40E81D521A390055193E /* AuthorObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorObject.swift; sourceTree = "<group>"; };
 		4353EFF81D48A573007D0072 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumParser.swift; sourceTree = SOURCE_ROOT; };
 		43F541821D46119D00E2EF84 /* Forum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F541851D46119D00E2EF84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		43F541871D46119D00E2EF84 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		43F541891D46119D00E2EF84 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		43F5418C1D46119D00E2EF84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43F5418E1D46119D00E2EF84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43F541911D46119D00E2EF84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43F541931D46119D00E2EF84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8124D6D01D4862D000641B42 /* ForumObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumObject.swift; sourceTree = "<group>"; };
-		8124D6D21D4869E800641B42 /* HeaderObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderObject.swift; sourceTree = "<group>"; };
-		81C4D0BC1D4F4BAC00B86D5A /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		81C4D0BE1D4F4CAA00B86D5A /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
-		81C4D0BF1D4F4CAA00B86D5A /* String+HTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
+		816B98031D532CD600598BD1 /* String+HTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
+		816B98051D532CD600598BD1 /* AuthorObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorObject.swift; sourceTree = "<group>"; };
+		816B98061D532CD600598BD1 /* ForumObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumObject.swift; sourceTree = "<group>"; };
+		816B98071D532CD600598BD1 /* HeaderObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderObject.swift; sourceTree = "<group>"; };
+		816B98081D532CD600598BD1 /* MessageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageObject.swift; sourceTree = "<group>"; };
+		816B980A1D532CD600598BD1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		816B980B1D532CD600598BD1 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		816B980C1D532CD600598BD1 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		816B980D1D532CD600598BD1 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		9E7316EBFC55C284C3ACE5FC /* Pods-Forum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Forum.release.xcconfig"; path = "Pods/Target Support Files/Pods-Forum/Pods-Forum.release.xcconfig"; sourceTree = "<group>"; };
 		B490CDC2E79E79CDB7C64896 /* Pods_Forum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Forum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -79,17 +79,11 @@
 		43F541841D46119D00E2EF84 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
+				816B98021D532CD600598BD1 /* Extensions */,
+				816B98041D532CD600598BD1 /* Models */,
+				816B98091D532CD600598BD1 /* ViewControllers */,
 				43F541851D46119D00E2EF84 /* AppDelegate.swift */,
-				43F541871D46119D00E2EF84 /* MasterViewController.swift */,
-				43F541891D46119D00E2EF84 /* DetailViewController.swift */,
-				81C4D0BC1D4F4BAC00B86D5A /* MessagesViewController.swift */,
-				81C4D0BE1D4F4CAA00B86D5A /* MessageViewController.swift */,
-				81C4D0BF1D4F4CAA00B86D5A /* String+HTML.swift */,
 				4353EFF81D48A573007D0072 /* ForumParser.swift */,
-				8124D6D01D4862D000641B42 /* ForumObject.swift */,
-				8124D6D21D4869E800641B42 /* HeaderObject.swift */,
-				433B40E61D51FAC50055193E /* MessageObject.swift */,
-				433B40E81D521A390055193E /* AuthorObject.swift */,
 				43F5418B1D46119D00E2EF84 /* Main.storyboard */,
 				43F5418E1D46119D00E2EF84 /* Assets.xcassets */,
 				43F541901D46119D00E2EF84 /* LaunchScreen.storyboard */,
@@ -104,6 +98,36 @@
 				B490CDC2E79E79CDB7C64896 /* Pods_Forum.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		816B98021D532CD600598BD1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				816B98031D532CD600598BD1 /* String+HTML.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		816B98041D532CD600598BD1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				816B98051D532CD600598BD1 /* AuthorObject.swift */,
+				816B98061D532CD600598BD1 /* ForumObject.swift */,
+				816B98071D532CD600598BD1 /* HeaderObject.swift */,
+				816B98081D532CD600598BD1 /* MessageObject.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		816B98091D532CD600598BD1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				816B980A1D532CD600598BD1 /* DetailViewController.swift */,
+				816B980B1D532CD600598BD1 /* MasterViewController.swift */,
+				816B980C1D532CD600598BD1 /* MessagesViewController.swift */,
+				816B980D1D532CD600598BD1 /* MessageViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		9B401B22663CDBF1062499CD /* Pods */ = {
@@ -237,17 +261,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				816B98151D532CD600598BD1 /* MessagesViewController.swift in Sources */,
+				816B98101D532CD600598BD1 /* ForumObject.swift in Sources */,
+				816B980E1D532CD600598BD1 /* String+HTML.swift in Sources */,
+				816B98121D532CD600598BD1 /* MessageObject.swift in Sources */,
 				4353EFF91D48A573007D0072 /* ForumParser.swift in Sources */,
-				8124D6D31D4869E800641B42 /* HeaderObject.swift in Sources */,
-				433B40E71D51FAC50055193E /* MessageObject.swift in Sources */,
-				81C4D0C01D4F4CAA00B86D5A /* MessageViewController.swift in Sources */,
-				8124D6D11D4862D000641B42 /* ForumObject.swift in Sources */,
-				433B40E91D521A390055193E /* AuthorObject.swift in Sources */,
-				43F5418A1D46119D00E2EF84 /* DetailViewController.swift in Sources */,
-				81C4D0BD1D4F4BAC00B86D5A /* MessagesViewController.swift in Sources */,
-				81C4D0C11D4F4CAA00B86D5A /* String+HTML.swift in Sources */,
-				43F541881D46119D00E2EF84 /* MasterViewController.swift in Sources */,
+				816B98111D532CD600598BD1 /* HeaderObject.swift in Sources */,
+				816B98141D532CD600598BD1 /* MasterViewController.swift in Sources */,
+				816B98161D532CD600598BD1 /* MessageViewController.swift in Sources */,
 				43F541861D46119D00E2EF84 /* AppDelegate.swift in Sources */,
+				816B980F1D532CD600598BD1 /* AuthorObject.swift in Sources */,
+				816B98131D532CD600598BD1 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
