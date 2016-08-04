@@ -108,7 +108,7 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate, Me
         let entireString = NSMakeRange(0, attrString.length)
         let layoutFrame = layouter.layoutFrameWithRect(maxRect, range: entireString)
         let sizeNeeded = layoutFrame.frame.size
-        return sizeNeeded.height
+        return sizeNeeded.height + 61
 
     }
     
