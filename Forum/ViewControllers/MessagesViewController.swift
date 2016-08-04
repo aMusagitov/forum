@@ -36,31 +36,37 @@ class MessagesViewController: UIViewController {
             guard let avatarsArray = jiDoc?.rootNode?.descendantsWithAttributeName("class", attributeValue: "postprofile") else { return }
             var objects = [MessageObject]()
             var avatar = ""
-            print(contentsArray.count)
-            print(authorsArray.count)
-            print(messagesOrder.count)
-            print(avatarsArray.count)
+//            print(contentsArray.count)
+//            print(authorsArray.count)
+//            print(messagesOrder.count)
+//            print(avatarsArray.count)
             for i in 0..<contentsArray.count {
                 var j = 0
-                let str = NSMutableString(string: contentsArray[i].rawContent!)
+                guard let str = contentsArray[i].rawContent else { continue }
                 let authorAndTime = authorsArray[i].content?.componentsSeparatedByString(" » ")
                 let content = NSAttributedString(HTMLData: str.dataUsingEncoding(NSUTF8StringEncoding), documentAttributes: nil)
                 if authorsArray[i].lastChild?.content == "Гость" {
-                    objects.append(MessageObject(time: authorAndTime![1], content: content, author: AuthorObject(name: authorAndTime![0], profileUrl: "", avatar: "")))
-                    j--
+                    let author = AuthorObject(name: authorAndTime![0], profileUrl: "", avatar: "")
+                    guard let orderString = messagesOrder[i].children.first?.content, let orderInt = Int32(orderString.stringByReplacingOccurrencesOfString("#", withString: "")) else { continue }
+                    let order = NSNumber(int: orderInt)
+                    objects.append(MessageObject(time: authorAndTime![1], content: content, author: author, order : order))
+                    j -= 1
                 } else {
                 guard var url = authorsArray[i].lastChild?.firstChild!.attributes["href"] else {return}
                     if let a = avatarsArray[j].firstDescendantWithName("a"){
                         if a.attributes["href"]! == url{
                             if let img = (a.firstChildWithName("img")?.attributes["src"]){
-                                avatar = img.stringByReplacingOccurrencesOfString("/.", withString: "http://forum.awd.ru")
-                                url = url.stringByReplacingOccurrencesOfString(".", withString: "http://forum.awd.ru")
+                                avatar = img.getCorrectedURLString()
+                                url = url.getCorrectedURLString()
                             }
                         }
                     }
-                    j++
-                    //                let options = [DTDefaultTextColor : UIColor.blackColor(), DTDefaultFontFamily : "Helvetica Neue"]
-                    objects.append(MessageObject(time: authorAndTime![1], content: content, author: AuthorObject(name: authorAndTime![0], profileUrl: url, avatar: avatar)))
+                    
+                    j += 1
+                    guard let orderString = messagesOrder[i].children.first?.content, let orderInt = Int32(orderString.stringByReplacingOccurrencesOfString("#", withString: "")) else { continue }
+                    let order = NSNumber(int: orderInt)
+                    let author = AuthorObject(name: authorAndTime![0], profileUrl: url, avatar: avatar)
+                    objects.append(MessageObject(time: authorAndTime![1], content: content, author: author, order : order ))
                 }
             }
             dispatch_async(dispatch_get_main_queue(), {
@@ -91,7 +97,8 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate, Me
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableViewCell") as! MessageTableViewCell
         cell.tableView = tableView
         cell.delegate = self
-        cell.setContent(messages![indexPath.row].content)
+        let message = messages![indexPath.row]
+        cell.setContent(message.content)
         return cell
     }
     

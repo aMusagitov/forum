@@ -31,10 +31,8 @@ class ForumParser: NSObject {
                     guard let header = section.firstDescendantWithAttributeName("class", attributeValue: "header") else { continue }
                     guard let icons = header.firstDescendantWithAttributeName("class", attributeValue: "icon") else { continue }
                     guard let dt = icons.firstChildWithName("dt") else { continue }
-                    //                guard let urlString = dt.children.first?.attributes["href"] else { continue }
                     guard let content = dt.content else { continue }
                     let rows = section.descendantsWithAttributeName("class", attributeValue: "row")
-                    //                let link = urlString.stringByReplacingOccurrencesOfString("./", withString: "http://forum.awd.ru/")
                     objects.append(HeaderObject(url: "", content: content, children: self.parseRows(rows)))
                 }
                 dispatch_async(dispatch_get_main_queue(), {
