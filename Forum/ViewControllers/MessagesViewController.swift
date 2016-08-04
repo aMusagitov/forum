@@ -97,8 +97,7 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate, Me
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableViewCell") as! MessageTableViewCell
         cell.tableView = tableView
         cell.delegate = self
-        let message = messages![indexPath.row]
-        cell.setContent(message.content)
+        cell.message = messages![indexPath.row]
         return cell
     }
     
@@ -109,10 +108,6 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate, Me
         let entireString = NSMakeRange(0, attrString.length)
         let layoutFrame = layouter.layoutFrameWithRect(maxRect, range: entireString)
         let sizeNeeded = layoutFrame.frame.size
-        if sizeNeeded.height > 250
-        {
-            return 250
-        }
         return sizeNeeded.height
 
     }
@@ -135,6 +130,20 @@ protocol MessageTableViewCellDelegate : class {
 }
 
 class MessageTableViewCell: UITableViewCell, DTAttributedTextContentViewDelegate, DTLazyImageViewDelegate {
+    var message : MessageObject! {
+        didSet {
+            authorLabel.text = message.author.name
+            orderLabel.text = "#\(message.order.stringValue)"
+            timeLabel.text = message.time
+            contentTextView.attributedString = message.content
+        }
+    }
+    
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var orderLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     @IBOutlet weak var contentTextView: DTAttributedTextView!
     @IBOutlet weak var readAllButton: UIButton!
     weak var tableView : UITableView!
@@ -191,26 +200,4 @@ class MessageTableViewCell: UITableViewCell, DTAttributedTextContentViewDelegate
         }
     }
     
-}
-
-class UnscrollableTextView : UITextView {
-    var shrinked = false
-    override var attributedText: NSAttributedString! {
-        didSet {
-            invalidateIntrinsicContentSize()
-        }
-    }
-    
-    override func intrinsicContentSize() -> CGSize {
-        guard let cell = superview?.superview as?MessageTableViewCell else { return contentSize }
-        let numberOfLines = self.contentSize.height/self.font!.lineHeight
-        shrinked = numberOfLines > 30
-        if shrinked {
-            let height = 30*self.font!.lineHeight
-            cell.readAllButton.hidden = false
-            return CGSizeMake(contentSize.width, height)
-        }
-        cell.readAllButton.hidden = true
-        return contentSize
-    }
 }
